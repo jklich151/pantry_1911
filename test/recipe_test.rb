@@ -5,24 +5,26 @@ require './lib/recipe'
 
 class RecipeTest < Minitest::Test
   def test_it_exists
+    ingredient1 = Ingredient.new("Cheese", "C", 100)
+    ingredient2 = Ingredient.new("Macaroni", "oz", 30)
     recipe = Recipe.new("Mac and Cheese")
 
     assert_instance_of Recipe, recipe
   end
 
   def test_it_has_attributes
-    recipe = Recipe.new("Mac and Cheese")
     ingredient1 = Ingredient.new("Cheese", "C", 100)
     ingredient2 = Ingredient.new("Macaroni", "oz", 30)
+    recipe = Recipe.new("Mac and Cheese")
 
     assert_equal "Mac and Cheese", recipe.name
     assert_equal ({}), recipe.ingredients_required
   end
 
-  def test_can_add_ingredients
-    recipe = Recipe.new("Mac and Cheese")
+  def test_adding_ingredients
     ingredient1 = Ingredient.new("Cheese", "C", 100)
     ingredient2 = Ingredient.new("Macaroni", "oz", 30)
+    recipe = Recipe.new("Mac and Cheese")
 
     recipe.add_ingredient(ingredient1, 2)
     recipe.add_ingredient(ingredient2, 8)
@@ -30,30 +32,22 @@ class RecipeTest < Minitest::Test
     assert_equal ({ingredient1 => 2, ingredient2 => 8}), recipe.ingredients_required
   end
 
-  def test_amount_required_for_first_ingredient
-    recipe = Recipe.new("Mac and Cheese")
+  def test_amount_required
     ingredient1 = Ingredient.new("Cheese", "C", 100)
     ingredient2 = Ingredient.new("Macaroni", "oz", 30)
+    recipe = Recipe.new("Mac and Cheese")
 
     recipe.add_ingredient(ingredient1, 2)
-
-    assert_equal 2, recipe.amount_required(ingredient1)
-  end
-
-  def test_amount_required_for_second_ingredient
-    recipe = Recipe.new("Mac and Cheese")
-    ingredient1 = Ingredient.new("Cheese", "C", 100)
-    ingredient2 = Ingredient.new("Macaroni", "oz", 30)
-
     recipe.add_ingredient(ingredient2, 8)
 
+    assert_equal 2, recipe.amount_required(ingredient1)
     assert_equal 8, recipe.amount_required(ingredient2)
   end
 
   def test_all_ingredients
-    recipe = Recipe.new("Mac and Cheese")
     ingredient1 = Ingredient.new("Cheese", "C", 100)
     ingredient2 = Ingredient.new("Macaroni", "oz", 30)
+    recipe = Recipe.new("Mac and Cheese")
 
     recipe.add_ingredient(ingredient1, 2)
     recipe.add_ingredient(ingredient2, 8)
@@ -62,9 +56,9 @@ class RecipeTest < Minitest::Test
   end
 
   def test_total_calories
-    recipe = Recipe.new("Mac and Cheese")
     ingredient1 = Ingredient.new("Cheese", "C", 100)
     ingredient2 = Ingredient.new("Macaroni", "oz", 30)
+    recipe = Recipe.new("Mac and Cheese")
 
     recipe.add_ingredient(ingredient1, 2)
     recipe.add_ingredient(ingredient2, 8)
