@@ -10,8 +10,8 @@ class Recipe
     @ingredients_required[name] = amount
   end
 
-  def amount_required(name)
-    @ingredients_required.values.sum
+  def amount_required(ingredient)
+    @ingredients_required[ingredient]
   end
 
   def ingredients

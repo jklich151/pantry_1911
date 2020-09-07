@@ -11,6 +11,7 @@ class RecipeTest < Minitest::Test
   end
 
   def test_it_has_attributes
+    skip
     recipe = Recipe.new("Mac and Cheese")
     ingredient1 = Ingredient.new("Cheese", "C", 100)
     ingredient2 = Ingredient.new("Macaroni", "oz", 30)
@@ -20,6 +21,7 @@ class RecipeTest < Minitest::Test
   end
 
   def test_can_add_ingredients
+    skip
     recipe = Recipe.new("Mac and Cheese")
     ingredient1 = Ingredient.new("Cheese", "C", 100)
     ingredient2 = Ingredient.new("Macaroni", "oz", 30)
