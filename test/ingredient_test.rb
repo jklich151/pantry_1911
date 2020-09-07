@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './lib/ingredient'
 
 class IngredientTest < Minitest::Test
+
   def test_it_exists
     ingredient = Ingredient.new("Cheese", "oz", 50)
 
